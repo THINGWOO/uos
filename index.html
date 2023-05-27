@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <!DOCTYPE html>
+  <html lang="ko">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>서울 지도</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+  </head>
+  
+<body>
+    <div id="map" style="width: 100%; height: 100vh;"></div>
+    <div id="school-checkboxes"></div>
+    <button id="aggregate-button">학생수 추이 확인</button>
+    <button id="download-chart">그래프 다운로드</button>
+    <canvas id="chart"></canvas>
+
+    <script src="scripts.js" defer></script>
+</body>
+</html>
