@@ -90,7 +90,7 @@ function drawChart(aggregatedCounts, schoolNames) {
 }
 
 function createSchoolIcon(selected = false) {
-  const iconUrl = selected ? "img/school_selected.png" : "img/school.png";
+  const iconUrl = selected ? "school_selected.png" : "school.png";
   return L.icon({
     iconUrl: iconUrl,
     iconSize: [32, 32],
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }).addTo(map);
 
   const schoolIcon = L.icon({
-    iconUrl: "img/school.png",
+    iconUrl: "school.png",
     iconSize: [32, 32],
     iconAnchor: [16, 32],
   });
