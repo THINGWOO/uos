@@ -89,8 +89,8 @@ function drawChart(aggregatedCounts, schoolNames) {
       ...chartData,
       datasets: chartData.datasets.map((set) => ({
         ...set,
-        borderColor: set.borderColor || 'blue', // 선의 색깔이 지정되어 있지 않으면 기본적으로 파랑색으로 설정
-        borderWidth: 4, // 새로운 설정: 선의 너비를 조절
+        borderColor: set.borderColor || 'red', // 선의 색깔이 지정되어 있지 않으면 기본적으로 파랑색으로 설정
+        borderWidth: 8, // 새로운 설정: 선의 너비를 조절
       })),
     },
     options: chartOptions,
