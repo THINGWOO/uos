@@ -73,6 +73,7 @@ function drawChart(aggregatedCounts, schoolNames) {
       title: {
         display: true,
         text: `학생수 추이: ${schoolNames.join(', ')}`,
+        fontSize: 24, // 새로운 설정: 제목의 글자 크기를 조절
       },
     },
     scales: {
@@ -84,9 +85,16 @@ function drawChart(aggregatedCounts, schoolNames) {
 
   myChart = new Chart(ctx, {
     type: "line",
-    data: chartData,
+    data: {
+      ...chartData,
+      datasets: chartData.datasets.map((set) => ({
+        ...set,
+        borderColor: set.borderColor || 'blue', // 선의 색깔이 지정되어 있지 않으면 기본적으로 파랑색으로 설정
+        borderWidth: 4, // 새로운 설정: 선의 너비를 조절
+      })),
+    },
     options: chartOptions,
-  });
+   });
 }
 
 function createSchoolIcon(selected = false) {
