@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const labelText = L.marker([parseFloat(school.위도), parseFloat(school.경도)], {
           icon: label,
-          zIndexOffset: 100 // 이 값을 더 크게 설정해 보세요.
+          zIndexOffset: 60 // 이 값을 더 크게 설정해 보세요.
         }).addTo(map);
 
       });
