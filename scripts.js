@@ -67,38 +67,59 @@ function drawChart(aggregatedCounts, schoolNames) {
       },
     ],
   };
-
+  
   const chartOptions = {
     plugins: {
       title: {
         display: true,
         text: `학생수 추이: ${schoolNames.join(', ')}`,
-        fontSize: 24, // 새로운 설정: 제목의 글자 크기를 조절
+        font: {
+          size: 24,
+        },
+      },
+      legend: {
+        labels: {
+          font: {
+            size: 22,
+          },
+        },
       },
     },
     scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 20, // 변경된 설정: x축 범례의 글자 크기를 조절
+          },
+        },
+      },
       y: {
         beginAtZero: true,
+        ticks: {
+          font: {
+            size: 20, // 변경된 설정: y축 범례의 글자 크기를 조절
+          },
+        },
       },
     },
   };
-
+  
   myChart = new Chart(ctx, {
     type: "line",
     data: {
       ...chartData,
       datasets: chartData.datasets.map((set) => ({
         ...set,
-        borderColor: set.borderColor || 'red', // 선의 색깔이 지정되어 있지 않으면 기본적으로 파랑색으로 설정
-        borderWidth: 8, // 새로운 설정: 선의 너비를 조절
+        borderColor: 'red', // 변경된 설정: 선의 색을 빨간색으로 설정
+        borderWidth: 6, 
       })),
     },
     options: chartOptions,
-   });
+  });
 }
 
 function createSchoolIcon(selected = false) {
-  const iconUrl = selected ? "school_selected.png" : "school.png";
+  const iconUrl = selected ? "img/school_selected.png" : "img/school.png";
   return L.icon({
     iconUrl: iconUrl,
     iconSize: [32, 32],
@@ -116,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }).addTo(map);
 
   const schoolIcon = L.icon({
-    iconUrl: "school.png",
+    iconUrl: "img/school.png",
     iconSize: [32, 32],
     iconAnchor: [16, 32],
   });
@@ -200,8 +221,12 @@ document.getElementById('download-chart').addEventListener('click', () => {
     return;
   }
 
+  // 차트의 제목에서 학교 이름을 가져옵니다.
+  const title = myChart.options.plugins.title.text;
+  const schoolName = title.split(": ")[1];
+
   const link = document.createElement('a');
   link.href = myChart.toBase64Image();
-  link.download = 'chart.png';
+  link.download = `${schoolName}.png`;
   link.click();
 });
